@@ -1,28 +1,53 @@
 import React from 'react';
-import {ImageBackground, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  ImageBackground,
+  Pressable,
+  StyleSheet,
+  Text,
+} from 'react-native';
 
-import SearchBar from '../components/SearchBar';
+import Entypo from 'react-native-vector-icons/Entypo';
+
 const background = require('../../assets/images/wallpaper.jpg');
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={background} style={styles.image}>
-        <SearchBar placeholder="where are you going?" />
-        <Text style={styles.title}>Go Near</Text>
-        <Pressable
-          onPress={() => console.log(`Test button clicked`)}
-          onLongPress={() => console.log(`Long press`)}
-          style={styles.button}>
-          <Text style={styles.buttonText}>Explore nearby stays</Text>
-        </Pressable>
-      </ImageBackground>
-    </View>
+    <ImageBackground source={background} style={styles.image}>
+      <Pressable style={styles.searchButton}>
+        <Entypo name="magnifying-glass" size={25} color="#f15454" />
+        <Text style={styles.searchText}>where are you going?</Text>
+      </Pressable>
+      <Text style={styles.title}>Go Near</Text>
+      <Pressable
+        onPress={() => console.log(`Test button clicked`)}
+        onLongPress={() => console.log(`Long press`)}
+        style={styles.button}>
+        <Text style={styles.buttonText}>Explore nearby stays</Text>
+      </Pressable>
+    </ImageBackground>
   );
 };
 
 export default Home;
 const styles = StyleSheet.create({
-  container: {flex: 1, flexDirection: 'column'},
+  searchButton: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    borderRadius: 30,
+    flexDirection: 'row',
+    height: 60,
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 20,
+    width: Dimensions.get('screen').width - 20,
+    zIndex: 100,
+  },
+
+  searchText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   image: {
     height: 500,
     justifyContent: 'center',
