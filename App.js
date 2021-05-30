@@ -15,6 +15,7 @@ import Home from './src/screens/Home';
 
 import SearchResults from './src/screens/SearchResults';
 import DestinationSearch from './src/screens/DestinationSearch';
+import Guests from './src/screens/Guests';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,7 +28,7 @@ const App: () => Node = () => {
     <>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <SafeAreaView style={backgroundStyle}>
-        <DestinationSearch />
+        <Guests />
       </SafeAreaView>
     </>
   );
