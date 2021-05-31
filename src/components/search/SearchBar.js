@@ -1,19 +1,24 @@
 import React, {useState} from 'react';
 import {
   StyleSheet,
-  Dimensions,
   TextInput,
   View,
   TouchableWithoutFeedback,
+  Pressable,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const SearchBar = ({placeholder}) => {
   const [search, setsearch] = useState('');
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <Ionicons name="arrow-back" size={25} color="black" />
+      <Pressable onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={25} color="black" />
+      </Pressable>
       <TextInput
         value={search}
         onChangeText={setsearch}

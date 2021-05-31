@@ -29,7 +29,6 @@ export default GuestParameters;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'white',
     borderBottomWidth: 1,
     borderColor: 'lightgrey',
     flexDirection: 'row',

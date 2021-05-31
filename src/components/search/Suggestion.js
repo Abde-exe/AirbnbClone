@@ -1,13 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useNavigation} from '@react-navigation/native';
 
 const Suggestion = ({title}) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate('Guests')}>
       <Entypo name="location-pin" size={30} style={styles.icon} />
       <Text style={styles.text}>{title}</Text>
-    </View>
+    </Pressable>
   );
 };
 

@@ -10,16 +10,18 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const background = require('../../assets/images/wallpaper.jpg');
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <ImageBackground source={background} style={styles.image}>
-      <Pressable style={styles.searchButton}>
+      <Pressable
+        style={styles.searchButton}
+        onPress={() => navigation.navigate('Search')}>
         <Entypo name="magnifying-glass" size={25} color="#f15454" />
         <Text style={styles.searchText}>where are you going?</Text>
       </Pressable>
       <Text style={styles.title}>Go Near</Text>
       <Pressable
-        onPress={() => console.log(`Test button clicked`)}
+        onPress={() => navigation.navigate('Results')}
         onLongPress={() => console.log(`Long press`)}
         style={styles.button}>
         <Text style={styles.buttonText}>Explore nearby stays</Text>
