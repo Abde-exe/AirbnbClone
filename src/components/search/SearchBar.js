@@ -16,18 +16,17 @@ const SearchBar = ({placeholder}) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-back" size={25} color="black" />
-      </Pressable>
       <TextInput
         value={search}
         onChangeText={setsearch}
         placeholder={placeholder}
         style={styles.textInput}
       />
-      <TouchableWithoutFeedback onPress={() => setsearch('')}>
-        <AntDesign name="closecircle" size={18} color="lightgrey" />
-      </TouchableWithoutFeedback>
+      {search !== '' ? (
+        <TouchableWithoutFeedback onPress={() => setsearch('')}>
+          <AntDesign name="closecircle" size={18} color="lightgrey" />
+        </TouchableWithoutFeedback>
+      ) : null}
     </View>
   );
 };
@@ -41,7 +40,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flexDirection: 'row',
     height: 60,
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
     position: 'relative',
     width: '100%',
   },

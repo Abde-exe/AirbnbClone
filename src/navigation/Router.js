@@ -21,22 +21,20 @@ const Router = () => {
         <Stack.Screen
           name="Search"
           component={DestinationSearch}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Results"
-          component={SearchResults}
-          options={{
-            headerShown: false,
-          }}
+          options={{headerTitle: 'Search your destination'}}
         />
         <Stack.Screen
           options={{
             headerTitle: 'How many people?',
           }}
           name="Guests"
+          component={Guests}
+        />
+        <Stack.Screen
+          options={{
+            headerTitle: 'How many people?',
+          }}
+          name="Posts"
           component={Guests}
         />
       </Stack.Navigator>

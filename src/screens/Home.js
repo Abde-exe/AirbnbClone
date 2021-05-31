@@ -21,7 +21,7 @@ const Home = ({navigation}) => {
       </Pressable>
       <Text style={styles.title}>Go Near</Text>
       <Pressable
-        onPress={() => navigation.navigate('Results')}
+        onPress={() => navigation.navigate('SearchResultsTab')}
         onLongPress={() => console.log(`Long press`)}
         style={styles.button}>
         <Text style={styles.buttonText}>Explore nearby stays</Text>
