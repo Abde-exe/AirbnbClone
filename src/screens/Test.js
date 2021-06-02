@@ -1,12 +1,21 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import CarouselItem from '../components/CarouselItem';
-import feed from '../../assets/data/feed';
-const post1 = feed[0];
+import places from '../../assets/data/feed';
 const Test = () => {
+  const [selected, setselected] = useState(null);
+
   return (
     <View>
-      <CarouselItem post={post1} />
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={places}
+        renderItem={({item}) => <CarouselItem post={item} />}
+        snapToInterval={Dimensions.get('screen').width - 50}
+        snapToAlignment={'center'}
+        decelerationRate={'fast'}
+      />
     </View>
   );
 };

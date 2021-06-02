@@ -26,10 +26,20 @@ export default CarouselItem;
 
 const styles = StyleSheet.create({
   container: {
-    height: 120,
     borderRadius: 15,
+    height: 120,
     padding: 5,
     width: Dimensions.get('screen').width - 50,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 4,
   },
   innerContainer: {
     flexDirection: 'row',
