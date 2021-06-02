@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import GuestParameters from '../components/GuestParameters';
 
-const Guests = ({navigation}) => {
+const Guests = ({navigation, route}) => {
   const [adults, setAdults] = useState(0);
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
   return (
     <View style={styles.container}>
       <View>
+        <Text>{route.params}</Text>
         <GuestParameters
           title="Adults"
           subTitle="Ages 13 or above"

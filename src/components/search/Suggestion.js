@@ -1,17 +1,15 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
-const Suggestion = ({title}) => {
+const Suggestion = ({item}) => {
   const navigation = useNavigation();
   return (
-    <Pressable
-      style={styles.container}
-      onPress={() => navigation.navigate('Guests')}>
+    <View style={styles.container}>
       <Entypo name="location-pin" size={30} style={styles.icon} />
-      <Text style={styles.text}>{title}</Text>
-    </Pressable>
+      <Text style={styles.text}>{item.description}</Text>
+    </View>
   );
 };
 
@@ -20,7 +18,6 @@ export default Suggestion;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'white',
     borderBottomWidth: 1,
     borderColor: 'lightgrey',
     flexDirection: 'row',

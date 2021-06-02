@@ -1,32 +1,34 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  TouchableWithoutFeedback,
-  Pressable,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import Suggestion from './Suggestion';
 
 const SearchBar = ({placeholder}) => {
-  const [search, setsearch] = useState('');
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <TextInput
-        value={search}
-        onChangeText={setsearch}
-        placeholder={placeholder}
-        style={styles.textInput}
+      <GooglePlacesAutocomplete
+        placeholder="Where are your going?"
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(data, details);
+          navigation.navigate('Guests', data.description);
+        }}
+        query={{
+          key: 'AIzaSyB1kDQfZZkFCasqxqmoZniw7sVyZ3Cvkrw',
+          language: 'fr',
+          types: '(cities)',
+        }}
+        renderRow={item => <Suggestion item={item} />}
+        styles={{
+          textInput: styles.textInput,
+        }}
+        suppressDefaultStyles
+        enablePoweredByContainer={false}
       />
-      {search !== '' ? (
-        <TouchableWithoutFeedback onPress={() => setsearch('')}>
-          <AntDesign name="closecircle" size={18} color="lightgrey" />
-        </TouchableWithoutFeedback>
-      ) : null}
     </View>
   );
 };
@@ -36,18 +38,12 @@ export default SearchBar;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: 'white',
     flexDirection: 'row',
-    height: 60,
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    marginVertical: 20,
     position: 'relative',
     width: '100%',
   },
   textInput: {
     fontSize: 20,
-    fontWeight: 'bold',
-    width: '60%',
   },
 });
