@@ -5,28 +5,33 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  View,
 } from 'react-native';
 
 import Entypo from 'react-native-vector-icons/Entypo';
+import CarouselItem2 from '../components/CarouselItem';
 
 const background = require('../../assets/images/wallpaper.jpg');
+
 const Home = ({navigation}) => {
   return (
-    <ImageBackground source={background} style={styles.image}>
-      <Pressable
-        style={styles.searchButton}
-        onPress={() => navigation.navigate('Search')}>
-        <Entypo name="magnifying-glass" size={25} color="#f15454" />
-        <Text style={styles.searchText}>where are you going?</Text>
-      </Pressable>
-      <Text style={styles.title}>Go Near</Text>
-      <Pressable
-        onPress={() => navigation.navigate('SearchResultsTab')}
-        onLongPress={() => console.log(`Long press`)}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Explore nearby stays</Text>
-      </Pressable>
-    </ImageBackground>
+    <View>
+      <ImageBackground source={background} style={styles.image}>
+        <Pressable
+          style={styles.searchButton}
+          onPress={() => navigation.navigate('Search')}>
+          <Entypo name="magnifying-glass" size={25} color="#f15454" />
+          <Text style={styles.searchText}>where are you going?</Text>
+        </Pressable>
+        <Text style={styles.title}>Go Near</Text>
+        <Pressable
+          onPress={() => navigation.navigate('SearchResultsTab')}
+          onLongPress={() => console.log(`Long press`)}
+          style={styles.button}>
+          <Text style={styles.buttonText}>Explore nearby stays</Text>
+        </Pressable>
+      </ImageBackground>
+    </View>
   );
 };
 

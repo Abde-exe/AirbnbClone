@@ -8,6 +8,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import Home from '../screens/Home';
 import Explore from './Explore';
+import Test from '../screens/Test';
 
 const Tab = createBottomTabNavigator();
 const HomeTab = () => {
@@ -27,7 +28,7 @@ const HomeTab = () => {
       />
       <Tab.Screen
         name="Saved"
-        component={Home}
+        component={Test}
         options={{
           tabBarIcon: ({color}) => (
             <FontAwesome name="heart-o" size={25} color={color} />
