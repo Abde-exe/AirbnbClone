@@ -14,11 +14,12 @@ const SearchResultsMap = () => {
   const flatlist = useRef();
   //reference to a marker in the map
   const map = useRef();
+
   const viewConfig = useRef({itemVisiblePercentThreshold: 70});
   const onViewChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
       const selectedItem = viewableItems[0].item;
-      setselectedPlace(selectedItem.id);
+      setselectedPlaceId(selectedItem.id);
     }
   });
 

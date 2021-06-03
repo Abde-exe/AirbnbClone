@@ -1,14 +1,16 @@
 import React from 'react';
-import {Image, StyleSheet, Text, Pressable} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {useNavigation} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 
-const Post = ({post}) => {
-  const navigation = useNavigation();
+import posts from '../../assets/data/feed';
+
+const DetailedPost = () => {
+  const route = useRoute();
+  const post = posts.find(item => item.id === route.params.postId);
+
   return (
-    <Pressable
-      onPress={() => navigation.navigate('PostDetail', {postId: post.id})}
-      style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Image source={{uri: post.image}} style={styles.image} />
       <Entypo name="heart" size={30} style={styles.icon} />
       <Text style={styles.beds}>
@@ -22,11 +24,12 @@ const Post = ({post}) => {
         <Text style={styles.newPrice}> ${post.newPrice}</Text> / night
       </Text>
       <Text style={styles.total}> ${post.totalPrice} total</Text>
-    </Pressable>
+      <Text style={styles.description}>{post.description}</Text>
+    </ScrollView>
   );
 };
 
-export default Post;
+export default DetailedPost;
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +54,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontWeight: '800',
     lineHeight: 26,
     color: 'black',
     marginTop: 8,
@@ -78,5 +82,10 @@ const styles = StyleSheet.create({
     color: '#5B5B5B',
     marginTop: 8,
     textDecorationLine: 'underline',
+  },
+  description: {
+    marginTop: 16,
+    fontSize: 18,
+    color: 'black',
   },
 });

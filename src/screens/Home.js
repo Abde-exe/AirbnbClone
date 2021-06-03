@@ -30,6 +30,9 @@ const Home = ({navigation}) => {
           style={styles.button}>
           <Text style={styles.buttonText}>Explore nearby stays</Text>
         </Pressable>
+        <Pressable onPress={() => navigation.navigate('PostDetail')}>
+          <Text>PostDetail</Text>
+        </Pressable>
       </ImageBackground>
     </View>
   );

@@ -1,9 +1,21 @@
 import React from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const CarouselItem = ({post}) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => navigation.navigate('PostDetail', {postId: post.id})}
+      style={styles.container}>
       <View style={styles.innerContainer}>
         <Image source={{uri: post.image}} style={styles.image} />
         <View style={{marginHorizontal: 12, flexShrink: 1}}>
@@ -18,7 +30,7 @@ const CarouselItem = ({post}) => {
           </Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

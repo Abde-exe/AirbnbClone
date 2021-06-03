@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from '../screens/Home';
 import SearchResultsTab from './SearchResultsTab';
+import PostDetail from '../screens/PostDetail';
 const Stack = createStackNavigator();
 const Explore = () => {
   return (
