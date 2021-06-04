@@ -7,7 +7,28 @@ import CustomMarker from '../components/CustomMarker';
 
 import places from '../../assets/data/feed';
 
-const SearchResultsMap = () => {
+const SearchResultsMap = ({guests}) => {
+  const mG = guests.guests;
+
+  //fetching posts
+  const [posts, setposts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postsResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {maxGuests: {ge: mG}},
+          }),
+        );
+        setposts(postsResult.data.listPosts.items);
+      } catch (error) {
+        console.log(`error`, error);
+      }
+    };
+    fetchPosts();
+  }, []);
+  //selecting markers
   const [selectedPlaceId, setselectedPlaceId] = useState(null);
 
   //reference to a post in the list
@@ -22,7 +43,6 @@ const SearchResultsMap = () => {
       setselectedPlaceId(selectedItem.id);
     }
   });
-
   useEffect(() => {
     if (!selectedPlaceId || !flatlist) {
       return;
@@ -36,8 +56,8 @@ const SearchResultsMap = () => {
     //select the right place and move the map putting the marker at the center of the view
     const selectedPlace = places[index];
     const region = {
-      latitude: selectedPlace.coordinate.latitude,
-      longitude: selectedPlace.coordinate.longitude,
+      latitude: selectedPlace.latitude,
+      longitude: selectedPlace.longitude,
       latitudeDelta: 0.8,
       longitudeDelta: 0.8,
     };
@@ -56,10 +76,10 @@ const SearchResultsMap = () => {
           latitudeDelta: 0.8,
           longitudeDelta: 0.8,
         }}>
-        {places.map(place => (
+        {posts.map(place => (
           <CustomMarker
             key={place.id}
-            coordinate={place.coordinate}
+            coordinate={{latitude: place.latitude, longitude: place.longitude}}
             isSelected={place.id === selectedPlaceId}
             price={place.newPrice}
             onPress={() => setselectedPlaceId(place.id)}

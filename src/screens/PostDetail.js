@@ -1,13 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
+import {StyleSheet, View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+
+import posts from '../../assets/data/feed';
 
 import DetailedPost from '../components/DetailedPost';
 
 const PostDetail = () => {
+  const route = useRoute();
+  const post = route.params.post;
+  console.log(`route`, route);
   return (
     <View>
-      <DetailedPost />
+      <DetailedPost post={post} />
     </View>
   );
 };

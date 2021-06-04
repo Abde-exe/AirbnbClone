@@ -1,14 +1,10 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {useRoute} from '@react-navigation/native';
 
-import posts from '../../assets/data/feed';
-
-const DetailedPost = () => {
-  const route = useRoute();
-  const post = posts.find(item => item.id === route.params.postId);
-
+const DetailedPost = ({post}) => {
+  const days = 7;
+  console.log(`post`, post);
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Image source={{uri: post.image}} style={styles.image} />
@@ -23,7 +19,7 @@ const DetailedPost = () => {
         <Text style={styles.oldPrice}>${post.oldPrice}</Text>
         <Text style={styles.newPrice}> ${post.newPrice}</Text> / night
       </Text>
-      <Text style={styles.total}> ${post.totalPrice} total</Text>
+      <Text style={styles.total}> ${post.newPrice * days} total</Text>
       <Text style={styles.description}>{post.description}</Text>
     </ScrollView>
   );

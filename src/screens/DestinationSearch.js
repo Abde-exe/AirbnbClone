@@ -6,15 +6,15 @@ import searchData from '../../assets/data/search';
 import SearchBar from '../components/search/SearchBar';
 import Suggestion from '../components/search/Suggestion';
 const DestinationSearch = () => {
+  console.log(`searchData[0]`, searchData[0]);
   return (
     <View style={styles.container}>
       <SearchBar />
 
-      {/*    <FlatList
+      <FlatList
         data={searchData}
         renderItem={({item}) => <Suggestion title={item.description} />}
       />
-  */}
     </View>
   );
 };

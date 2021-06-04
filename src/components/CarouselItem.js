@@ -9,12 +9,13 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
+const days = 7;
 const CarouselItem = ({post}) => {
   const navigation = useNavigation();
 
   return (
     <Pressable
-      onPress={() => navigation.navigate('PostDetail', {postId: post.id})}
+      onPress={() => navigation.navigate('PostDetail', {post})}
       style={styles.container}>
       <View style={styles.innerContainer}>
         <Image source={{uri: post.image}} style={styles.image} />
@@ -26,7 +27,8 @@ const CarouselItem = ({post}) => {
             {post.title}
           </Text>
           <Text style={styles.prices}>
-            <Text style={styles.newPrice}> ${post.newPrice}</Text> / night
+            <Text style={styles.newPrice}> ${post.newPrice * days}</Text> /
+            night
           </Text>
         </View>
       </View>

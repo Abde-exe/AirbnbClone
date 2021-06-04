@@ -35,7 +35,12 @@ const Guests = ({navigation, route}) => {
         onPress={() =>
           navigation.navigate('HomeTab', {
             screen: 'Explore',
-            params: {screen: 'SearchResultsTab'},
+            params: {
+              screen: 'SearchResultsTab',
+              params: {
+                guests: adults + children,
+              },
+            },
           })
         }>
         <Text style={{color: 'white', fontSize: 20, fontWeight: '700'}}>

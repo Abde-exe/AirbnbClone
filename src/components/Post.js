@@ -3,11 +3,12 @@ import {Image, StyleSheet, Text, Pressable} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
+const days = 7;
 const Post = ({post}) => {
   const navigation = useNavigation();
   return (
     <Pressable
-      onPress={() => navigation.navigate('PostDetail', {postId: post.id})}
+      onPress={() => navigation.navigate('PostDetail', {post})}
       style={styles.container}>
       <Image source={{uri: post.image}} style={styles.image} />
       <Entypo name="heart" size={30} style={styles.icon} />
@@ -21,7 +22,7 @@ const Post = ({post}) => {
         <Text style={styles.oldPrice}>${post.oldPrice}</Text>
         <Text style={styles.newPrice}> ${post.newPrice}</Text> / night
       </Text>
-      <Text style={styles.total}> ${post.totalPrice} total</Text>
+      <Text style={styles.total}> ${post.newPrice * days} total</Text>
     </Pressable>
   );
 };
