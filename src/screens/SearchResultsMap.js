@@ -1,11 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  Dimensions,
-  PushNotificationIOS,
-} from 'react-native';
+import {FlatList, StyleSheet, View, Dimensions} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 import CarouselItem from '../components/CarouselItem';
