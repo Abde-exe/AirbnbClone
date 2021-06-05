@@ -12,6 +12,7 @@ import CarouselItem from '../components/CarouselItem';
 import CustomMarker from '../components/CustomMarker';
 
 const SearchResultsMap = ({posts}) => {
+  //test
   //selecting markers
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
 
