@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -15,19 +15,20 @@ const SearchBar = ({placeholder}) => {
         onPress={(data, details = null) => {
           // 'details' is provided when fetchDetails = true
           console.log(data, details);
-          navigation.navigate('Guests', data.description);
+          navigation.navigate('Guests', {viewport: details.geometry.viewport});
+        }}
+        fetchDetails
+        styles={{
+          textInput: styles.textInput,
         }}
         query={{
           key: 'AIzaSyB1kDQfZZkFCasqxqmoZniw7sVyZ3Cvkrw',
           language: 'fr',
           types: '(cities)',
         }}
-        renderRow={item => <Suggestion item={item} />}
-        styles={{
-          textInput: styles.textInput,
-        }}
         suppressDefaultStyles
-        enablePoweredByContainer={false}
+        renderRow={item => <Suggestion title={item.description} />}
+        enablePoweredByContainer
       />
     </View>
   );

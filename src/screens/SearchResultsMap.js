@@ -7,27 +7,7 @@ import CustomMarker from '../components/CustomMarker';
 
 import places from '../../assets/data/feed';
 
-const SearchResultsMap = ({guests}) => {
-  const mG = guests.guests;
-
-  //fetching posts
-  const [posts, setposts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsResult = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: {maxGuests: {ge: mG}},
-          }),
-        );
-        setposts(postsResult.data.listPosts.items);
-      } catch (error) {
-        console.log(`error`, error);
-      }
-    };
-    fetchPosts();
-  }, []);
+const SearchResultsMap = ({posts}) => {
   //selecting markers
   const [selectedPlaceId, setselectedPlaceId] = useState(null);
 

@@ -10,7 +10,6 @@ const Guests = ({navigation, route}) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text>{route.params}</Text>
         <GuestParameters
           title="Adults"
           subTitle="Ages 13 or above"
@@ -39,6 +38,7 @@ const Guests = ({navigation, route}) => {
               screen: 'SearchResultsTab',
               params: {
                 guests: adults + children,
+                viewport: route.params.viewport,
               },
             },
           })
