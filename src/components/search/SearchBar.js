@@ -6,6 +6,7 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import Suggestion from './Suggestion';
 
 const SearchBar = ({placeholder}) => {
+  //test
   const navigation = useNavigation();
 
   return (

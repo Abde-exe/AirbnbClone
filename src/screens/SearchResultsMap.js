@@ -8,6 +8,7 @@ import CustomMarker from '../components/CustomMarker';
 import places from '../../assets/data/feed';
 
 const SearchResultsMap = ({posts}) => {
+  //test
   //selecting markers
   const [selectedPlaceId, setselectedPlaceId] = useState(null);
 

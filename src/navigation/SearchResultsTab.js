@@ -11,6 +11,7 @@ import SearchResultsMap from '../screens/SearchResultsMap';
 const Tab = createMaterialTopTabNavigator();
 
 const SearchResultsTab = ({route}) => {
+  //test
   const [posts, setposts] = useState([]);
   const viewport = route.params.viewport;
 

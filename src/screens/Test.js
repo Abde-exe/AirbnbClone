@@ -3,6 +3,7 @@ import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import CarouselItem from '../components/CarouselItem';
 import places from '../../assets/data/feed';
 const Test = () => {
+  //test
   return (
     <View>
       <FlatList
