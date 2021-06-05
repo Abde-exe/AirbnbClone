@@ -5,6 +5,7 @@ import searchData from '../../assets/data/search';
 import SearchBar from '../components/search/SearchBar';
 import Suggestion from '../components/search/Suggestion';
 const DestinationSearch = () => {
+  //test
   return (
     <View style={styles.container}>
       <SearchBar />

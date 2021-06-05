@@ -4,6 +4,7 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import GuestParameters from '../components/GuestParameters';
 
 const Guests = ({navigation, route}) => {
+  //test
   const [adults, setAdults] = useState(0);
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);

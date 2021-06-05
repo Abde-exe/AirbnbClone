@@ -1,15 +1,19 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {FlatList, StyleSheet, View, Dimensions} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Dimensions,
+  PushNotificationIOS,
+} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 import CarouselItem from '../components/CarouselItem';
 import CustomMarker from '../components/CustomMarker';
 
-import places from '../../assets/data/feed';
-
 const SearchResultsMap = ({posts}) => {
   //selecting markers
-  const [selectedPlaceId, setselectedPlaceId] = useState(null);
+  const [selectedPlaceId, setSelectedPlaceId] = useState(null);
 
   //reference to a post in the list
   const flatlist = useRef();
@@ -19,8 +23,8 @@ const SearchResultsMap = ({posts}) => {
   const viewConfig = useRef({itemVisiblePercentThreshold: 70});
   const onViewChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
-      const selectedItem = viewableItems[0].item;
-      setselectedPlaceId(selectedItem.id);
+      const selectedPlace = viewableItems[0].item;
+      setSelectedPlaceId(selectedPlace.id);
     }
   });
   useEffect(() => {
@@ -28,13 +32,13 @@ const SearchResultsMap = ({posts}) => {
       return;
     }
     //finding the post in the list with the id of the selected marker
-    const index = places.findIndex(place => place.id === selectedPlaceId);
+    const index = posts.findIndex(place => place.id === selectedPlaceId);
 
     //scrolling to the right post
     flatlist.current.scrollToIndex({index});
 
     //select the right place and move the map putting the marker at the center of the view
-    const selectedPlace = places[index];
+    const selectedPlace = posts[index];
     const region = {
       latitude: selectedPlace.latitude,
       longitude: selectedPlace.longitude,
@@ -48,8 +52,8 @@ const SearchResultsMap = ({posts}) => {
     <View style={{width: '100%', height: '100%'}}>
       <MapView
         ref={map}
-        provider={PROVIDER_GOOGLE}
         style={styles.map}
+        provider={PROVIDER_GOOGLE}
         initialRegion={{
           latitude: 28.3279822,
           longitude: -16.5124847,
@@ -62,7 +66,7 @@ const SearchResultsMap = ({posts}) => {
             coordinate={{latitude: place.latitude, longitude: place.longitude}}
             isSelected={place.id === selectedPlaceId}
             price={place.newPrice}
-            onPress={() => setselectedPlaceId(place.id)}
+            onPress={() => setSelectedPlaceId(place.id)}
           />
         ))}
       </MapView>
@@ -71,7 +75,7 @@ const SearchResultsMap = ({posts}) => {
           ref={flatlist}
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={places}
+          data={posts}
           renderItem={({item}) => <CarouselItem post={item} />}
           //scrolling, snap parameters
           snapToInterval={Dimensions.get('screen').width - 50}
@@ -85,16 +89,7 @@ const SearchResultsMap = ({posts}) => {
     </View>
   );
 };
-{
-  /*
- initialRegion={{
-          latitude: 28.3279822,
-          longitude: -16.5124847,
-          latitudeDelta: 0.8,
-          longitudeDelta: 0.8,
-        }}
-  */
-}
+
 export default SearchResultsMap;
 
 const styles = StyleSheet.create({

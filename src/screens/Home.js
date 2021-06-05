@@ -1,3 +1,4 @@
+import Auth from '@aws-amplify/auth';
 import React from 'react';
 import {
   Dimensions,
@@ -9,11 +10,13 @@ import {
 } from 'react-native';
 
 import Entypo from 'react-native-vector-icons/Entypo';
-import CarouselItem2 from '../components/CarouselItem';
 
 const background = require('../../assets/images/wallpaper.jpg');
 
 const Home = ({navigation}) => {
+  const logout = () => {
+    Auth.signOut();
+  };
   return (
     <View>
       <ImageBackground source={background} style={styles.image}>
@@ -29,6 +32,9 @@ const Home = ({navigation}) => {
           onLongPress={() => console.log(`Long press`)}
           style={styles.button}>
           <Text style={styles.buttonText}>Explore nearby stays</Text>
+        </Pressable>
+        <Pressable onPress={logout}>
+          <Text>Logout</Text>
         </Pressable>
       </ImageBackground>
     </View>

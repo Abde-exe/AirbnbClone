@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const Suggestion = ({title}) => {
+  //test
   return (
     <View style={styles.container}>
       <Entypo name="location-pin" size={30} style={styles.icon} />
