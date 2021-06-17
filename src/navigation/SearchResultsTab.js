@@ -5,7 +5,6 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {API, graphqlOperation} from 'aws-amplify';
 import {listPosts} from '../graphql/queries';
 
-import Test from '../screens/Test';
 import SearchResults from '../screens/SearchResults';
 import SearchResultsMap from '../screens/SearchResultsMap';
 const Tab = createMaterialTopTabNavigator();
